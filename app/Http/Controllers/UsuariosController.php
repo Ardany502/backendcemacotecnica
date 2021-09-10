@@ -8,9 +8,10 @@ use Illuminate\Support\Facades\Hash;
 
 class UsuariosController extends ApiResponseController
 {
-    public function index()
+    public function getListarUsuarios()
     {
-
+        $data= User::get();
+        return $this->successResponse($data,200,"ok");
     }
     public function postCrearUsuario(Request $request)
     {
