@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ControllerImagenes;
 use App\Http\Controllers\ProductosController;
 use App\Http\Controllers\UsuariosController;
 use Illuminate\Http\Request;
@@ -30,6 +31,11 @@ Route::delete('/eliminarusuario/{id}', [UsuariosController::class, 'deleteElimin
 //Productos
 Route::get('/listarproductos', [ProductosController::class, 'getListarProductos']);
 Route::get('/listarproductosminimos', [ProductosController::class, 'getListarProductosMinimos']);
-Route::post('/crearproducto', [ProductosController::class, 'postCrearProductos']);
+Route::get('/listarproducto/{id}', [ProductosController::class, 'getListarProductosMinimos']);
+Route::post('/crearproducto', [ProductosController::class, 'getInformacionProducto']);
 Route::put('/actualizarproducto/{id}', [ProductosController::class, 'putActualizarProductos']);
 Route::delete('/eliminarproductos/{id}', [ProductosController::class, 'deleteEliminarProductos']);
+
+
+//Subida de Imagenes
+Route::post('/subirImagen', [ControllerImagenes::class, 'postSubirimagen']);

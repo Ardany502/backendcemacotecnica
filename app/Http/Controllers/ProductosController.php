@@ -17,6 +17,11 @@ class ProductosController extends ApiResponseController
         $data= productos::get()->where('inventario','>','5');
         return $this->successResponse($data);
     }
+    public function getInformacionProducto($id)
+    {
+        $data = productos::where('id',$id)->firstOrFail();
+        return $this->successResponse($data);
+    }
     public function postCrearProductos(Request $request)
     {
 
