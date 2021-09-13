@@ -31,8 +31,8 @@ Route::delete('/eliminarusuario/{id}', [UsuariosController::class, 'deleteElimin
 //Productos
 Route::get('/listarproductos', [ProductosController::class, 'getListarProductos']);
 Route::get('/listarproductosminimos', [ProductosController::class, 'getListarProductosMinimos']);
-Route::get('/listarproducto/{id}', [ProductosController::class, 'getListarProductosMinimos']);
-Route::post('/crearproducto', [ProductosController::class, 'getInformacionProducto']);
+Route::get('/listarproducto/{id}', [ProductosController::class, 'getInformacionProducto']);
+Route::post('/crearproducto', [ProductosController::class, 'postCrearProductos']);
 Route::put('/actualizarproducto/{id}', [ProductosController::class, 'putActualizarProductos']);
 Route::delete('/eliminarproductos/{id}', [ProductosController::class, 'deleteEliminarProductos']);
 
