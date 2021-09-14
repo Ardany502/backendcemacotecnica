@@ -13,6 +13,11 @@ class UsuariosController extends ApiResponseController
         $data= User::get();
         return $this->successResponse($data,200,"ok");
     }
+    public function getInformacionUsuario($id)
+    {
+        $data = User::where('id',$id)->firstOrFail();
+        return $this->successResponse($data);
+    }
     public function postCrearUsuario(Request $request)
     {
          $data=$request->all();
@@ -20,13 +25,23 @@ class UsuariosController extends ApiResponseController
          $dataInsertada = User::create($data);
          return $this->successResponse($dataInsertada,200,'ok');
     }
+
     public function putActualizarUsuario(Request $request, $id)
     {
          $comprobarExisteUsuario=User::where('id',$id)->first();
+         $request->request->remove('password1');
          if(isset($comprobarExisteUsuario))
          {
-            User::where('id',$id)->update($request->all());
-            return $this->successResponse($request->all(),200,'ok');
+            $data=$request->all();
+            if(isset($request->password))
+            {
+               $data['password']= Hash::make($request->password);
+            }else
+            {
+                $data['password']= $comprobarExisteUsuario->password;
+            }
+            User::where('id',$id)->update($data);
+            return $this->successResponse($data,200,'ok');
          }
          return $this->errorResponse("error",404,"Usuario No Existe");
 

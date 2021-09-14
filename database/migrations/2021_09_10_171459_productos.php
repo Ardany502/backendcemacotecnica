@@ -20,7 +20,7 @@ class Productos extends Migration
             $table->float('precio');
             $table->string('SKU');
             $table->integer('inventario');
-            $table->string('imagen');
+            $table->string('imagen')->nullable();
             $table->timestamps();
         });
     }
