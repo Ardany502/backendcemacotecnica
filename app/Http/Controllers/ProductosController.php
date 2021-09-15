@@ -14,7 +14,7 @@ class ProductosController extends ApiResponseController
     }
     public function getListarProductosMinimos()
     {
-        $data= productos::get()->where('inventario','>','5');
+        $data= productos::where('inventario','>=','6')->get();
         return $this->successResponse($data);
     }
     public function getInformacionProducto($id)

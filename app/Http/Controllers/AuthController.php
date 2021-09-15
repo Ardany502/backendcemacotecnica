@@ -12,7 +12,7 @@ class AuthController extends ApiResponseController
     public function validarLogin()
     {
         $user=auth()->user();
-        return isset($user)? $this->respuesta($user): $this->error('fail');
+        return isset($user)? $this->successResponse($user): $this->errorResponse('fail');
     }
 
     public function login(Request $request)
